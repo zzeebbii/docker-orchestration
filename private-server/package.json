@@ -1,0 +1,11 @@
+{
+  "name": "private-server",
+  "version": "1.0.0",
+  "description": "Private server which will only respond to public server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muhammad Zohaib Aslam",
+  "license": "MIT"
+}
