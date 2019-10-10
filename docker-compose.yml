@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  frontend-server:
+    build:
+      context: ./public-server/.
+    ports:
+      - "8001:8001" # Map docker container port to local system port for accessing the application
+    depends_on: 
+      - backend-server # Make sure that backend server is build and started first
+    networks: # Network for communication between containers
+      - cloud_application
+
+  backend-server:
+    build:
+      context: ./private-server/.
+    expose:
+      - "8002"
+    networks:
+      - cloud_application
+
+# Creating network for data sharing
+networks:
+  cloud_application:

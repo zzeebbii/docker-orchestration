@@ -1,5 +1,5 @@
 const http = require("http");
-const getResponse = require("../utils/handler");
+const getResponse = require("./handler");
 
 const requestHandler = (req, res) => {
   const response = getResponse(req.client);
@@ -9,7 +9,7 @@ const requestHandler = (req, res) => {
   res.write("\n");
 
   http
-    .request("http://localhost:3002", result => {
+    .request("http://backend-server:8002", result => {
       // Get data from remote server and write it on response of public server
       result.on("data", data => {
         res.write(data);
@@ -24,5 +24,5 @@ const requestHandler = (req, res) => {
 };
 
 // Try to find port number from environment variable, if not provided, then use 3000 by default
-const port = process.env.port || 3000;
+const port = process.env.port || 8001;
 http.createServer(requestHandler).listen(port);

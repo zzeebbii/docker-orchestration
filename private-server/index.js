@@ -1,5 +1,5 @@
 const http = require("http");
-const getResponse = require("../utils/handler");
+const getResponse = require("./handler");
 
 const requestHandler = (req, res) => {
   const response = getResponse(req.client);
@@ -8,5 +8,5 @@ const requestHandler = (req, res) => {
 };
 
 // Try to find port number from environment variable, if not provided, then use 3000 by default
-const port = process.env.port || 3002;
+const port = process.env.port || 8002;
 http.createServer(requestHandler).listen(port);
